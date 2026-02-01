@@ -4,22 +4,23 @@
   <title>For You ❤️</title>
   <style>
     .heart {
-  position: absolute;
-  font-size: 20px;
-  animation: float 6s linear infinite;
-  opacity: 0.8;
-}
+      position: absolute;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      opacity: 0.8;
+    }
 
-@keyframes float {
-  0% {
-    transform: translateY(100vh);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-10vh);
-    opacity: 0;
-  }
-}
+    @keyframes float {
+      0% {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
     body {
       margin: 0;
       height: 100vh;
@@ -35,6 +36,79 @@
     h1, h2, p {
       text-align: center;
     }
+
+    button {
+      font-size: 20px;
+      padding: 12px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #888;
+      color: white;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Hey <span style="color:#ff2e63;">RAINA</span> ❤️</h1>
+<p>I made this just to ask you one thing…</p>
+
+<h2>എനിക്ക് നിന്നെ ഇഷ്ടമാണ്
+  Will you be my Valentine? 🌹</h2>
+
+<button id="yes">YES 😍</button>
+<button id="no">No 😶</button>
+
+<audio id="bg-music" loop>
+  <source src="malare-cover.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // YES button click
+  document.getElementById("yes").addEventListener("click", () => {
+    document.body.innerHTML = "<h1>❤️ You just made me the happiest person ❤️</h1>";
+  });
+
+  // NO button movement
+  const noBtn = document.getElementById("no");
+  noBtn.addEventListener("mouseenter", () => {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  });
+
+  // Floating hearts
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+  setInterval(createHeart, 400);
+
+  // Play music on first click anywhere
+  document.body.addEventListener("click", () => {
+    const music = document.getElementById("bg-music");
+    if (music.paused) music.play();
+  }, { once: true });
+</script>
+
+</body>
+</html>    }
 
     button {
       font-size: 20px;
