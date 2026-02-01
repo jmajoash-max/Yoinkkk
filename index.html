@@ -57,7 +57,6 @@
 <audio id="bg-music" loop>
   <source src="malare-cover.mp3" type="audio/mpeg">
 </audio>
-
 <script>
   const yesBtn = document.getElementById("yes");
   const noBtn = document.getElementById("no");
@@ -65,13 +64,12 @@
 
   // YES button click with heart explosion
   yesBtn.addEventListener("click", () => {
-    // Remove old text/buttons
     document.querySelector("p")?.remove();
     document.querySelector("h2")?.remove();
     yesBtn.remove();
     noBtn.remove();
 
-    // Create explosion of hearts
+    // Explosion of hearts
     for (let i = 0; i < 50; i++) {
       const heart = document.createElement("div");
       heart.className = "heart";
@@ -81,7 +79,7 @@
       heart.style.fontSize = Math.random() * 25 + 15 + "px";
       heart.style.transition = "transform 1.5s ease-out, opacity 1.5s ease-out";
       document.body.appendChild(heart);
-      
+
       const x = (Math.random() - 0.5) * 500;
       const y = (Math.random() - 0.5) * 500;
       setTimeout(() => {
@@ -100,7 +98,7 @@
     setTimeout(() => h1.style.opacity = 1, 100);
   });
 
-  // NO button dodge
+  // NO button movement
   noBtn.addEventListener("mouseenter", () => {
     const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
     const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
@@ -125,6 +123,3 @@
     if (music.paused) music.play();
   }, { once: true });
 </script>
-
-</body>
-</html>
